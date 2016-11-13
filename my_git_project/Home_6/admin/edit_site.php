@@ -44,25 +44,16 @@ if(isset($_GET['id'])){
     //если в запросе более нуля строк
          
     while ($row = $result->fetch_assoc()) {  ?>
-
     <div class="grid_1_of_4 images_1_of_4">
-        <form method='POST'>
-        <a href="preview.html""><img src="img/logo.jpg" alt=""/></a>
-        <h2><?php echo($row['name']); ?>/</h2>
-        <div class="price-details">
-            <div class="price-number">
-                <p><span class="rupees"> <?php echo($row['price'].' грн.'); ?></p>
-            </div>
-            <div class="add-cart">
-                  <h4><a type='submit'>Редагувати</a></h4>
-            </div>
-            <div class="clear"></div>
-        </div>
+        <form method='POST' action="edit_site.php">
+            <input type="text" name="id" value="<?php echo $row['id'] ?>">
+            <input type="text" name="name" value="<?php echo $row['name'] ?>">
+            <input type="text" name="price" value="<?php echo $row['price'] ?>">
+            <input type="text" name="date" value="<?php echo $row['date'] ?>">
+            <input type="text" name="images" value="<?php echo $row['images'] ?>">
         </form>
     </div>
     <?php
-
-        
     }
 }
 // закрываем подключение
