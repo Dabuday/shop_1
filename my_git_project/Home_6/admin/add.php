@@ -8,7 +8,7 @@ else:
     ?>
 <?php include("../admin/admin_header.php")?>
 
-<?php endif; ?>
+
 
 <?php
 
@@ -28,9 +28,10 @@ if(isset($_POST['name']) && isset($_POST['price'])){
     $price = htmlentities(mysqli_real_escape_string($link, $_POST['price']));
     $date = htmlentities(mysqli_real_escape_string($link, $_POST['date']));
     $images = htmlentities(mysqli_real_escape_string($link, $_POST['images']));
+    $operation = htmlentities(mysqli_real_escape_string($link, $_POST['operation']));
      
     // создание строки запроса
-    $query ="INSERT INTO Pollen VALUES(NULL, '$name','$price','$date','$images')";
+    $query ="INSERT INTO . $operation VALUES(NULL, '$name','$price','$date','$images')";
      
     // выполняем запрос
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
@@ -53,14 +54,17 @@ if(isset($_POST['name']) && isset($_POST['price'])){
                         <input type="text" name="price" id="price">
                     </label>
                 </p>
+                <p> 
+                    <select  name="operation" id="operation" >
+                        <option value="Pollen" selected="selected"> Pollen </option>
+                        <option value="Hohey"> Hohey </option>
+                    </select>
+                </p>
                 <p> <label>
-                        <input type="submit" name="submit" id="submit" value="Добавить данные  в базу данных">
+                        <input type="submit" name="submit" id="submit" value="Добавить">
                     </label>
                 </p>
             </form>
-   
-    <?php include "../includes/footer.php";?>
-        </div>
-    </div>
-</body>
-<htmle
+            
+<?php endif; ?>
+<?php include "../includes/footer.php";?>

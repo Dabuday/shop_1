@@ -1,23 +1,14 @@
+<?php $db = require_once "includes/connection.php"; ?>
 <?php include("includes/header.php"); ?>
 
-<?php
-
-$host = 'localhost'; // адрес сервера
-$database = 'userlistdb'; // имя базы данных
-$user = 'root'; // имя пользователя
-$password = '123123'; // пароль
-
-$conn = new mysqli($host, $user, $password, $database) or die  ('Невозможно открыть базу');
-
-$result = $conn->query("SELECT * FROM `Honey`");
-while ($row = $result->fetch_assoc()) {  ?>
-
+<?php $data = $db->execute("SELECT * FROM `Honey`"); ?>
+<?php foreach ($data as $item) : ?>
     <div class="grid_1_of_4 images_1_of_4">
         <a href="preview.html""><img src="img/logo.jpg" alt=""/></a>
-        <h2><?php echo($row['name']); ?>/</h2>
+        <h2><?php echo($item['name']); ?>/</h2>
         <div class="price-details">
             <div class="price-number">
-                <p><span class="rupees"> <?php echo($row['price'].' грн.'); ?></p>
+                <p><span class="rupees"> <?php echo($item['price'] . ' грн.'); ?></p>
             </div>
             <div class="add-cart">
                 <h4><a href="preview.html">Add to Cart</a></h4>
@@ -25,7 +16,5 @@ while ($row = $result->fetch_assoc()) {  ?>
             <div class="clear"></div>
         </div>
     </div>
-    <?php
-}
-?>
+<?php endforeach; ?>
 <?php include("includes/footer.php"); ?>

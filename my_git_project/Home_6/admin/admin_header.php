@@ -3,15 +3,14 @@
 session_start();
 
 if(!isset($_SESSION["session_username"])):
-   header("location:login.php");
-else:
-    ?>
+    header("location:login.php");
+else:?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Административная панель</title>
+    <title>Административная панельHEDER</title>
     <link href="../css/style.css" media="screen" rel="stylesheet">
 </head>
 <body>
@@ -43,12 +42,11 @@ else:
         <div class="menu">
             <ul>
                 <li class="active"><a href="../index.php">Home</a></li>
-                <li><a href="../Honey.php">Honey</a></li>
-                <li><a href="../Pollen.php">Pollen</a></li>
 
-                <li><a href="../admin/site.php">Добавить</a></li>
-                <li><a href="../admin/edit_site.php">Редактировать</a></li>
-                <li><a href="../admin/del_site.php">Удалить</a></li>
+                <li><a href="../admin/add.php">Добавить товар</a></li>
+                <li><a href="../admin/list_file.php">Список товарів</a></li>
+                <li><a href="../admin/add_Position.php">Добавить позицію</a></li>
+
 
                 <div class="clear"></div>
                 <br>

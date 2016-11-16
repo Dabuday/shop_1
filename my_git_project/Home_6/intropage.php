@@ -1,17 +1,10 @@
+<?php session_start();?>
 <?php
-
-session_start();
-
-if(!isset($_SESSION["session_username"])):
+if(!isset($_SESSION["session_username"])) {
+    $_SESSION['error'] = "Invalid username or password!";
    header("location:login.php");
-else:
-    ?>
-    <?php include("admin/edit.php"); ?>
-    <div id="welcome">
-        <h2>Добро пожаловать, <span><?php echo $_SESSION['session_username'];?>! </span></h2>
-        <p><a href="logout.php">Выйти</a> из системы</p>
-    </div>
+}
+?>
+<?php header("location:admin/list_file.php");?>
 
-    <?php include("includes/footer.php"); ?>
-
-<?php endif; ?>
+  
